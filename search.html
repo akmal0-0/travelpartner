@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+  <link href="search.css" rel="stylesheet">
+  <link href="Home.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid my-0">
+        <a class="navbar-brand" href="/Home.html"><h1 class="head">TRAVEL <span class="head-1">PARTNER</span></h1></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" aria-current="page" href="/Home.html">Home</a>
+                <a class="nav-link" href="#">Hotel</a>
+                <a class="nav-link" href="#">Restaurant</a>
+                <a class="nav-link" href="#">Explore</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="col-md-9 col-xl-10 col-sm-9 col-9 position-absolute search-bar">
+      <form action="none">
+        <button type="button" class="col-xl-1 col-md-2 col-sm-2 col-lg-2 col-3">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <input type="text" placeholder="Enter the place" name="q" class="col-8">
+      </form> 
+    </div>
+
+    <div class="position-absolute div1"><!---days-->
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+          <h3>Number of Staying days</h3>
+        </div>
+        <div class="col-xl-8 col-lg-4 col-md-5 col-sm-12 mb-5 col-12">
+          <button type="button" id="btn">
+            <span class="minus">-</span>
+            <span class="num">01</span>
+            <span class="plus">+</span> 
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="position-absolute col-12 div2"><!----persons-->
+      <div class="row my-5">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 persons">
+          <h3>Number of Persons</h3>
+        </div>
+        <div class="col-xl-8 col-lg-4 col-md-5 col-sm-12 mb-5 col-12">
+          <button type="button" id="btn2" class="btn2">
+            <span class="minus1">-</span>
+            <span class="num1">01</span>
+            <span class="plus1">+</span> 
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="position-absolute col-12 div3"><!----total budget-->
+      <div class="row my-5">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12 budget">
+          <h3>Total Budget <br>(<span style="color: #28AAD2;">For the entered place</span>)</h3>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 mb-5 col-12">
+          <button type="button" id="btn3">
+            <input type="text" placeholder="Amount">Rs.
+          </button>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4" id="trip-start">
+          <h4>Trip start date</h4>
+          <input id="startDate" class="form-control" type="date">
+          <span id="startDateSelected"></span>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4" id="trip-end">
+          <h4>Trip end date</h4>
+          <input id="endDate" class="form-control" type="date">
+          <span id="endDateSelected"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="position-absolute col-12 div4"><!---hotel price-->
+      <div class="row my-5 price">
+        <div class="col-xl-12 col-lg-4 col-md-10 col-sm-8 col-8">
+          <h3>Your expected Hotel booking price <br>(<span style="color: #ffffff;">Per day</span>)</h3>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-5 col-12">
+          <button type="button" id="btn3">
+            <input type="text" placeholder="Amount">Rs.
+          </button>
+        </div>
+        <div class="col-12 next">
+          <a href="/hotels.html">
+            <button>
+              Next
+              <i class="fa-solid fa-caret-right"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+  <!---no of staying days script-->
+  <script>
+    const plus = document.querySelector(".plus"),
+     minus = document.querySelector(".minus"),
+     num = document.querySelector(".num");
+     let a = 1;
+     plus.addEventListener("click", ()=>{
+       a++;
+       a = (a < 10) ? "0" + a : a;
+       num.innerText = a;
+     });
+ 
+     minus.addEventListener("click", ()=>{
+       if(a > 1){
+         a--;
+         a = (a < 10) ? "0" + a : a;
+         num.innerText = a;
+       }
+     });
+   </script>
+  <!---no of staying days script end-->
+
+  <!---no of person script-->
+  <script>
+    const plus1 = document.querySelector(".plus1"),
+     minus1 = document.querySelector(".minus1"),
+     num1 = document.querySelector(".num1");
+     let b = 1;
+     plus1.addEventListener("click", ()=>{
+       b++;
+       b = (b < 10) ? "0" + b : b;
+       num1.innerText = b;
+     });
+ 
+     minus1.addEventListener("click", ()=>{
+       if(b > 1){
+         b--;
+         b = (b < 10) ? "0" + b : b;
+         num1.innerText = b;
+       }
+     });
+   </script>
+  <!---no of person script end-->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/39d6712fc9.js" crossorigin="anonymous"></script>
+</body>
+</html>
